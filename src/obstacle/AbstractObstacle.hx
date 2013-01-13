@@ -16,6 +16,7 @@ class AbstractObstacle extends Sprite
 	{
 		super();
 		
+		
 	}
 	
 }

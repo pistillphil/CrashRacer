@@ -18,7 +18,7 @@ import nme.ui.Keyboard;
 
 class Main extends Sprite 
 {
-	private var player:Player;
+	public static var player:Player;
 	private var obstacleManager:ObstacleManager;
 	
 	public function new() 

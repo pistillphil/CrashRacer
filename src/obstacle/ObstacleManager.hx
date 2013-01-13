@@ -1,4 +1,5 @@
 package obstacle;
+import nme.display.DisplayObject;
 import nme.display.Sprite;
 import nme.events.Event;
 import nme.Lib;
@@ -101,9 +102,12 @@ class ObstacleManager extends Sprite
 	{
 		for (obs in obstacles)
 		{
-			if (obs.image.hitTestObject(Lib.current.stage.getChildAt(Lib.current.stage.numChildren - 1)))
+			if (obs.y < Main.player.y)
 			{
-				trace("bam");
+				if (obs.image.hitTestObject(Main.player))
+				{
+					trace("bam");
+				}
 			}
 		}
 	}

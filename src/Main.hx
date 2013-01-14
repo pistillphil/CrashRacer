@@ -19,6 +19,7 @@ import nme.ui.Keyboard;
 class Main extends Sprite 
 {
 	public static var player:Player;
+	public static var active:Bool = true;
 	private var obstacleManager:ObstacleManager;
 	
 	public function new() 
@@ -43,10 +44,17 @@ class Main extends Sprite
 	
 	private function update(event:Event):Void 
 	{
-		setChildIndex(player, this.numChildren -1);
-		player.update(event);
-		obstacleManager.update(event);
-		//trace(Lib.current.stage.numChildren);
+		if (active) 
+		{	
+			setChildIndex(player, this.numChildren -1);
+			player.update(event);
+			obstacleManager.update(event);
+			//trace(Lib.current.stage.numChildren);
+		}
+		else
+		{
+			player.explode();
+		}
 	}
 	
 
@@ -59,5 +67,6 @@ class Main extends Sprite
 		
 		Lib.current.addChild(new Main());
 	}
+	
 	
 }

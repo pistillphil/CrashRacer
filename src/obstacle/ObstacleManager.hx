@@ -106,6 +106,8 @@ class ObstacleManager extends Sprite
 			{
 				if (obs.image.hitTestObject(Main.player))
 				{
+					Main.player.explosion = true;
+					Main.active = false;
 					trace("bam");
 				}
 			}

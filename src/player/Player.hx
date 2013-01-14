@@ -23,16 +23,25 @@ import nme.Vector;
 class Player extends Sprite
 {
 
-	public static var speed:Float = 6;
+	private var speed:Float = 6;		//The speed the car moves Left or Right
 	
-	private var tiles:Tilesheet;
-	private var sprites:Hash<Array<Float> >;
+	private var tiles:Tilesheet;			//Tilesheet containing all Images of the car
+	private var sprites:Hash<Array<Float> >;//Holds all relevant images (according to direction)
 	
-	public var moveLeft:Bool = false;
-	public var moveRight:Bool = false;
+	private var moveLeft:Bool = false;		//Does the car currently move left?
+	private var moveRight:Bool = false;		//Does the car currently move left?
 	
-	public static var spriteWidth:Float;
+	private static var spriteWidth:Float;	//The width of the standard car sprite
+	
+	private var explosionTileSheet:Tilesheet;	//Tilesheet containing all frames  of the explosion
+	private var tileCount:Int = 0;				//How many tiles are in the Tilesheet?
+	private var explsionAnimation:Array<Array<Float> >;	//The data for the tilesheet (position and framenum)
+	public var explosion:Bool;				//Does the car (currently) explode?
+	private var explosionFrames:Int	= 64;	//The amount of time the explosion animation should last
+	private var tempFrames:Int;				//Helper for the explode() method
+	private var frameCount:Int = 0;				//Which frame in the animation is currently displayed?
 
+	//Constructor
 	public function new(posX:Int, posY:Int) 
 	{
 	
@@ -58,10 +67,12 @@ class Player extends Sprite
 		spriteWidth = this.width;
 		graphics.clear();
 		
+		createExplosion();
 		
 		
 	}
 	
+	//Updates that have to be checked every frame
 	public function update(event:Event):Void 
 	{
 		graphics.clear();
@@ -107,11 +118,13 @@ class Player extends Sprite
 		
 	}
 	
+	//The mouse is clicked on the car
 	private function onClick(e:MouseEvent):Void
 	{
 
 	}
 	
+	//A Key is down
 	private function startMove(event:KeyboardEvent):Void 
 	{
 		if (event.keyCode == Keyboard.D)
@@ -125,6 +138,7 @@ class Player extends Sprite
 		
 	}
 	
+	//Key is up
 	private function endMove(event:KeyboardEvent):Void
 	{
 		if (event.keyCode == Keyboard.D)
@@ -136,6 +150,54 @@ class Player extends Sprite
 			moveLeft = false;
 		}
 		
+	}
+	
+	//Creates the graphics and process for the explosion
+	private function createExplosion():Void
+	{
+		this.explosionTileSheet = new Tilesheet(Assets.getBitmapData("img/exp2.png"));
+		explsionAnimation = new Array<Array<Float> >();
+		explosion = false;
+		var spriteSize = 63;
+		var tilesPerRow = 4;
+		
+		for (i in 0...tilesPerRow)
+		{
+			for (j in 0...tilesPerRow)
+			{
+				explosionTileSheet.addTileRect(new Rectangle(j * spriteSize, i * spriteSize, spriteSize, spriteSize));
+				explsionAnimation.push([ -5, -7, tileCount]);
+				tileCount++;
+			}	
+		}
+	}
+	
+	//The car explodes
+	public function explode():Void
+	{
+		if (explosion)
+		{
+			if (tempFrames > 0)
+			{
+				tempFrames--;
+			}
+			else
+			{
+				frameCount++;
+				tempFrames = cast(explosionFrames / tileCount, Int);
+				
+				
+				if (frameCount >= tileCount)
+				{
+					explosion = false;
+					frameCount = 0;
+					return;
+				}
+				
+			}
+			graphics.clear();
+			explosionTileSheet.drawTiles(graphics, explsionAnimation[frameCount]);
+		}
 	}
 	
 }

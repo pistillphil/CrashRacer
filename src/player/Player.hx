@@ -12,6 +12,7 @@ import nme.Lib;
 import nme.Assets;
 import nme.events.MouseEvent;
 import nme.events.KeyboardEvent;
+import nme.media.Sound;
 import nme.ui.Keyboard;
 import nme.Vector;
 
@@ -35,6 +36,7 @@ class Player extends Sprite
 	
 	private var explosionTileSheet:Tilesheet;	//Tilesheet containing all frames  of the explosion
 	private var tileCount:Int = 0;				//How many tiles are in the Tilesheet?
+	public var explosionSound:Sound;			//Sounds is played when player explodes
 	private var explsionAnimation:Array<Array<Float> >;	//The data for the tilesheet (position and framenum)
 	public var explosion:Bool;				//Does the car (currently) explode?
 	private var explosionFrames:Int	= 64;	//The amount of time the explosion animation should last
@@ -157,6 +159,7 @@ class Player extends Sprite
 	{
 		this.explosionTileSheet = new Tilesheet(Assets.getBitmapData("img/exp2.png"));
 		explsionAnimation = new Array<Array<Float> >();
+		explosionSound = Assets.getSound("sounds/exp.wav");
 		explosion = false;
 		var spriteSize = 63;
 		var tilesPerRow = 4;

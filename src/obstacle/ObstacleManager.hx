@@ -108,7 +108,7 @@ class ObstacleManager extends Sprite
 				{
 					Main.player.explosion = true;
 					Main.active = false;
-					trace("bam");
+					Main.player.explosionSound.play();
 				}
 			}
 		}

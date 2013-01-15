@@ -178,6 +178,15 @@ class Player extends Sprite
 	//The car explodes
 	public function explode():Void
 	{
+		Main.active = false;
+		explosion = true;
+		explosionSound.play();
+		
+	}
+	
+	//Animates the explosion
+	public function animateExplosion():Void
+	{
 		if (explosion)
 		{
 			if (tempFrames > 0)

@@ -53,7 +53,7 @@ class Main extends Sprite
 		}
 		else
 		{
-			player.explode();
+			player.animateExplosion();
 		}
 	}
 	

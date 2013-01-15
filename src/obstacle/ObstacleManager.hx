@@ -106,9 +106,7 @@ class ObstacleManager extends Sprite
 			{
 				if (obs.image.hitTestObject(Main.player))
 				{
-					Main.player.explosion = true;
-					Main.active = false;
-					Main.player.explosionSound.play();
+					Main.player.explode();
 				}
 			}
 		}

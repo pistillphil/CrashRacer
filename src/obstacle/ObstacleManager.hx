@@ -20,8 +20,8 @@ class ObstacleManager extends Sprite
 	
 	private var obstacles:List<AbstractObstacle>;
 	
-	private static var min:Int = 40;
-	private static var max:Int = 120;
+	private var min:Int = 40;
+	private var max:Int = 120;
 	
 	private var rockImages:Array<BitmapData>;
 
@@ -122,6 +122,13 @@ class ObstacleManager extends Sprite
 				}
 			}
 		}
+	}
+	
+	public function changeFrequencyBy(min:Int, max:Int)
+	{
+		this.min += min;
+		this.max += max;
+		
 	}
 	
 }

@@ -10,6 +10,7 @@ import player.Player;
 import nme.Assets;
 import nme.events.KeyboardEvent;
 import nme.ui.Keyboard;
+import score.Score;
 
 /**
  * ...
@@ -19,8 +20,9 @@ import nme.ui.Keyboard;
 class Main extends Sprite 
 {
 	public static var player:Player;
+	public static var score:Score;
 	public static var active:Bool = true;
-	private var obstacleManager:ObstacleManager;
+	public static var obstacleManager:ObstacleManager;
 	
 	public function new() 
 	{
@@ -37,6 +39,8 @@ class Main extends Sprite
 		// entry point
 		player = new Player(cast(Lib.current.stage.stageWidth/2 - 32,Int), cast(Lib.current.stage.stageHeight - 128, Int));
 		addChild(player);
+		score = new Score();
+		addChild(score);
 		obstacleManager = new ObstacleManager();
 		addChild(obstacleManager);
 		addEventListener(Event.ENTER_FRAME, update);
@@ -49,6 +53,7 @@ class Main extends Sprite
 			setChildIndex(player, this.numChildren -1);
 			player.update(event);
 			obstacleManager.update(event);
+			score.addScore();
 			//trace(Lib.current.stage.numChildren);
 		}
 		else
@@ -56,6 +61,7 @@ class Main extends Sprite
 			player.animateExplosion();
 		}
 	}
+	
 	
 
 	

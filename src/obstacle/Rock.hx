@@ -1,9 +1,8 @@
 package obstacle;
+import nme.display.BitmapData;
 import nme.geom.Rectangle;
 import nme.display.Bitmap;
 import obstacle.AbstractObstacle;
-
-import nme.Assets;
 
 /**
  * ...
@@ -13,17 +12,17 @@ import nme.Assets;
 class Rock extends AbstractObstacle
 {
 
-	public function new(posX:Float, posY:Float) 
+	public function new(posX:Float, posY:Float, image:BitmapData) 
 	{
 		super();
 		
 		this.x = posX;
 		this.y = posY;
 		
-		image = new Bitmap(Assets.getBitmapData("img/a_0.png"));
-		image.scaleX = 0.1;
-		image.scaleY = 0.1;
-		addChild(image);
+		this.image = new Bitmap(image);
+		this.image.scaleX = 0.1;
+		this.image.scaleY = 0.1;
+		addChild(this.image);
 		
 		//testing hitboxes
 		/*

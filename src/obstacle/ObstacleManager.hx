@@ -4,6 +4,8 @@ import nme.display.Sprite;
 import nme.events.Event;
 import nme.Lib;
 import nme.Vector;
+import nme.display.BitmapData;
+import nme.Assets;
 
 /**
  * ...
@@ -18,8 +20,10 @@ class ObstacleManager extends Sprite
 	
 	private var obstacles:List<AbstractObstacle>;
 	
-	private static var min:Int = 60;
-	private static var max:Int = 180;
+	private static var min:Int = 40;
+	private static var max:Int = 120;
+	
+	private var rockImages:Array<BitmapData>;
 
 	public function new() 
 	{
@@ -33,6 +37,12 @@ class ObstacleManager extends Sprite
 		counter = 0;
 		create = true;
 		wait = 0;
+		
+		//Loads images
+		rockImages = new Array<BitmapData>();
+		rockImages.push(Assets.getBitmapData("img/a_0.png"));
+		rockImages.push(Assets.getBitmapData("img/b_0.png"));
+		rockImages.push(Assets.getBitmapData("img/c_0.png"));
 	}
 	
 	public function update(event:Event):Void 
@@ -53,7 +63,7 @@ class ObstacleManager extends Sprite
 			counter = 0;
 			wait = (Math.random() * max) + min;
 			create = false;
-			trace(wait);
+			//trace(wait);
 		}
 		else 
 		{
@@ -71,7 +81,9 @@ class ObstacleManager extends Sprite
 	
 	private function createObstacle()
 	{
-		var temp:AbstractObstacle = new Rock(Math.random()*Lib.current.stage.stageWidth, -64);
+		var randomImage:Int = Math.round(Math.random() * (rockImages.length - 1));
+		//trace(randomImage);
+		var temp:AbstractObstacle = new Rock(Math.random()*Lib.current.stage.stageWidth, -64, rockImages[randomImage]);
 		obstacles.add(temp);
 		Lib.current.stage.addChild(temp);
 		Lib.current.stage.setChildIndex(temp, 0);

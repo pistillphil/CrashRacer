@@ -26,7 +26,6 @@ class Score extends Sprite
 		super();
 		
 		this.score = 0;
-		this.setScoreRate(0.1);
 		
 		this.x = fontSize;
 		this.y = 0;
@@ -57,11 +56,11 @@ class Score extends Sprite
 	{
 		addScoreBy(scoreRate);
 		
-		if (score % 75 == 0)
+		/*if (score % 75 == 0)
 		{
 			scoreRate *= 2;
 			Main.obstacleManager.changeFrequencyBy( -5, -5);
-		}
+		}*/
 	}
 	
 	public function setScoreRate(rate:Float):Void 

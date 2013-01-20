@@ -1,0 +1,7 @@
+{
+	"numberOfRocks":12,
+	"scoreRate":0.1,
+	"minSpawnTime":40,
+	"maxSpawnTime":120,
+	"driveSpeed": 10
+}

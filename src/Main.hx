@@ -11,6 +11,7 @@ import nme.Assets;
 import nme.events.KeyboardEvent;
 import nme.ui.Keyboard;
 import score.Score;
+import wave.WaveManager;
 
 /**
  * ...
@@ -23,6 +24,9 @@ class Main extends Sprite
 	public static var score:Score;
 	public static var active:Bool = true;
 	public static var obstacleManager:ObstacleManager;
+	public static var waveManager:WaveManager;
+	
+	private var initialWave:Int = 0;
 	
 	public function new() 
 	{
@@ -37,6 +41,7 @@ class Main extends Sprite
 	private function init(e) 
 	{
 		// entry point
+		waveManager = new WaveManager(0);
 		player = new Player(cast(Lib.current.stage.stageWidth/2 - 32,Int), cast(Lib.current.stage.stageHeight - 128, Int));
 		addChild(player);
 		score = new Score();
@@ -44,6 +49,7 @@ class Main extends Sprite
 		obstacleManager = new ObstacleManager();
 		addChild(obstacleManager);
 		addEventListener(Event.ENTER_FRAME, update);
+		waveManager.loadWave();
 	}
 	
 	private function update(event:Event):Void 

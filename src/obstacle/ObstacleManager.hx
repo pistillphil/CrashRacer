@@ -20,9 +20,10 @@ class ObstacleManager extends Sprite
 	
 	private var obstacles:List<AbstractObstacle>;
 	
-	private var min:Int = 40;
-	private var max:Int = 120;
+	private var min:Int;
+	private var max:Int;
 	
+	private var numRocks:Int;
 	private var rockImages:Array<BitmapData>;
 
 	public function new() 
@@ -93,7 +94,7 @@ class ObstacleManager extends Sprite
 	{
 		for (obs in obstacles)
 		{
-			obs.y += obs.speed;
+			obs.y += AbstractObstacle.speed;
 		}
 		
 	}
@@ -129,6 +130,17 @@ class ObstacleManager extends Sprite
 		this.min += min;
 		this.max += max;
 		
+	}
+	
+	public function setFrequency(min:Int, max:Int)
+	{
+		this.min = min;
+		this.max = max;
+	}
+	
+	public function setNumRocks(rocks:Int):Void 
+	{
+		this.numRocks = rocks;
 	}
 	
 }

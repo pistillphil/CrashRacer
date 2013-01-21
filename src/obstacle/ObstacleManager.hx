@@ -25,6 +25,8 @@ class ObstacleManager extends Sprite
 	
 	private var numRocks:Int;
 	private var rockImages:Array<BitmapData>;
+	
+	private var numRivers:Int;
 
 	public function new() 
 	{
@@ -49,7 +51,6 @@ class ObstacleManager extends Sprite
 	public function update(event:Event):Void 
 	{
 		move();
-		checkCollision();
 		checkCollision();
 		checkCreate();
 		checkRemove();
@@ -80,14 +81,46 @@ class ObstacleManager extends Sprite
 		
 	}
 	
-	private function createObstacle()
+	private function createObstacle():Void 
 	{
-		var randomImage:Int = Math.round(Math.random() * (rockImages.length - 1));
-		//trace(randomImage);
-		var temp:AbstractObstacle = new Rock(Math.random()*Lib.current.stage.stageWidth, -64, rockImages[randomImage]);
-		obstacles.add(temp);
-		Lib.current.stage.addChild(temp);
-		Lib.current.stage.setChildIndex(temp, 0);
+		var numObstacles:Int = numRocks + numRivers;
+		var rand:Int = Math.round(Math.random() * numObstacles );
+		
+		if (rand < numRocks)
+		{
+			createRock();
+		}
+		else if (true)	//placeholder, will be changed when more kinds of obstacles are implemented
+		{
+			createRiver();
+		}
+		
+	}
+	
+	private function createRock():Void
+	{
+		if (numRocks > 0)
+		{
+			var randomImage:Int = Math.round(Math.random() * (rockImages.length - 1));
+			var temp:AbstractObstacle = new Rock(Math.random()* (Lib.current.stage.stageWidth -32), -64, rockImages[randomImage]);
+			obstacles.add(temp);
+			Lib.current.stage.addChild(temp);
+			Lib.current.stage.setChildIndex(temp, 0);
+			numRocks--;
+		}
+	}
+	
+	private function createRiver():Void 
+	{
+		if (numRivers > 0)
+		{
+			var temp:AbstractObstacle = new River(Math.random() * (Lib.current.stage.stageWidth -128) + 64 );
+			obstacles.add(temp);
+			Lib.current.stage.addChild(temp);
+			Lib.current.stage.setChildIndex(temp, 1);
+			numRivers--;
+		}
+		
 	}
 	
 	private function move()
@@ -141,6 +174,11 @@ class ObstacleManager extends Sprite
 	public function setNumRocks(rocks:Int):Void 
 	{
 		this.numRocks = rocks;
+	}
+	
+	public function setNumRivers(rivers:Int):Void
+	{
+		this.numRivers = rivers;
 	}
 	
 }

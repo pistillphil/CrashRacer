@@ -35,6 +35,7 @@ class WaveManager
 		
 		Main.obstacleManager.setFrequency(waveData.minSpawnTime, waveData.maxSpawnTime);
 		Main.obstacleManager.setNumRocks(waveData.numberOfRocks);
+		Main.obstacleManager.setNumRivers(waveData.numberOfRivers);
 		AbstractObstacle.speed = waveData.driveSpeed;
 		Main.score.setScoreRate(waveData.scoreRate);
 		

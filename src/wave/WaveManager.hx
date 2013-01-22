@@ -28,10 +28,13 @@ class WaveManager
 		if (data == null)
 		{
 			trace("No such file: " + "waves/wave_" + waveCount + ".json");
+			trace("Will use last waveData for new wave!!!");
+			waveCount--;	//Tells your which wave is the last
 		}
 		else
 		{
 		waveData = Json.parse(data);
+		}
 		
 		Main.obstacleManager.setFrequency(waveData.minSpawnTime, waveData.maxSpawnTime);
 		Main.obstacleManager.setNumRocks(waveData.numberOfRocks);
@@ -41,7 +44,6 @@ class WaveManager
 		AbstractObstacle.speed = waveData.driveSpeed;
 		Main.score.setScoreRate(waveData.scoreRate);
 		
-		}
 	}
 	
 	public function loadNextWave():Void 

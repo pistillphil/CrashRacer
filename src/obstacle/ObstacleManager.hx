@@ -57,6 +57,7 @@ class ObstacleManager extends Sprite
 		checkCollision();
 		checkCreate();
 		checkRemove();
+		checkWave();
 		
 	}
 	
@@ -152,6 +153,14 @@ class ObstacleManager extends Sprite
 		for (obs in obstacles)
 		{
 			obs.checkCollision();
+		}
+	}
+	
+	private function checkWave():Void 
+	{
+		if (numRocks + numRocks < 1 && numChildren < 1)
+		{
+			Main.waveManager.loadNextWave();
 		}
 	}
 	

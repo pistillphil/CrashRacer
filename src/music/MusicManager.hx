@@ -18,15 +18,17 @@ class MusicManager
 	private var channel:SoundChannel;
 	private var currentSong:Sound;
 	private var isPlaying:Bool;
+	private var songCount:Int = 4;
 
 	public function new() 
 	{
 		songs = new Array<Sound>();
 		
-		songs.push(Assets.getSound("music/song1.mp3"));
-		songs.push(Assets.getSound("music/song2.mp3"));
-		songs.push(Assets.getSound("music/song3.mp3"));
-		songs.push(Assets.getSound("music/song4.mp3"));
+		for (i in 1...songCount+1)
+		{
+			songs.push(Assets.getSound("music/song" + i + ".mp3"));
+		}
+		
 		
 		Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, checkMute);
 		
@@ -38,7 +40,7 @@ class MusicManager
 	{
 		if (!isPlaying)
 		{
-			var ran = Math.floor(Math.random() * 3.99);
+			var ran = Math.floor(Math.random() * (songs.length -0.01));
 			currentSong = songs[ran];
 			channel = currentSong.play();
 			channel.addEventListener(Event.SOUND_COMPLETE, handleStoppedSong);
@@ -58,6 +60,7 @@ class MusicManager
 	private function handleStoppedSong(ev:Event):Void
         {
             isPlaying = false;
+			this.play();
         }
 		
 	private function checkMute(event:KeyboardEvent):Void

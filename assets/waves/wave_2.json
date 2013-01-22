@@ -1,0 +1,10 @@
+{
+	"numberOfRocks":18,
+	"rockScale":0.2,
+	"numberOfRivers":4,
+	"bridgeWidthFactor": 6,
+	"scoreRate":0.2,
+	"minSpawnTime":35,
+	"maxSpawnTime":120,
+	"driveSpeed": 11
+}

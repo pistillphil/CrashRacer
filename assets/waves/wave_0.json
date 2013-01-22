@@ -1,5 +1,6 @@
 {
 	"numberOfRocks":12,
+	"rockScale":0.2,
 	"numberOfRivers":1,
 	"scoreRate":0.1,
 	"minSpawnTime":40,

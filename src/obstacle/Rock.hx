@@ -12,7 +12,7 @@ import obstacle.AbstractObstacle;
 class Rock extends AbstractObstacle
 {
 
-	public function new(posX:Float, posY:Float, image:BitmapData) 
+	public function new(posX:Float, posY:Float, image:BitmapData, scale:Float) 
 	{
 		super();
 		
@@ -20,8 +20,8 @@ class Rock extends AbstractObstacle
 		this.y = posY;
 		
 		this.image = new Bitmap(image);
-		this.image.scaleX = 0.1;
-		this.image.scaleY = 0.1;
+		this.image.scaleX = scale;
+		this.image.scaleY = scale;
 		addChild(this.image);
 		
 		//testing hitboxes

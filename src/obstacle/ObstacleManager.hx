@@ -25,6 +25,7 @@ class ObstacleManager extends Sprite
 	
 	private var numRocks:Int;
 	private var rockImages:Array<BitmapData>;
+	private  var rockScale:Float;
 	
 	private var numRivers:Int;
 
@@ -102,7 +103,7 @@ class ObstacleManager extends Sprite
 		if (numRocks > 0)
 		{
 			var randomImage:Int = Math.round(Math.random() * (rockImages.length - 1));
-			var temp:AbstractObstacle = new Rock(Math.random()* (Lib.current.stage.stageWidth -32), -64, rockImages[randomImage]);
+			var temp:AbstractObstacle = new Rock(Math.random()* (Lib.current.stage.stageWidth -32), -64, rockImages[randomImage],rockScale);
 			obstacles.add(temp);
 			Lib.current.stage.addChild(temp);
 			Lib.current.stage.setChildIndex(temp, 0);
@@ -174,6 +175,11 @@ class ObstacleManager extends Sprite
 	public function setNumRocks(rocks:Int):Void 
 	{
 		this.numRocks = rocks;
+	}
+	
+	public function setRockScale(scale:Float):Void
+	{
+		this.rockScale = scale;
 	}
 	
 	public function setNumRivers(rivers:Int):Void

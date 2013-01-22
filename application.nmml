@@ -20,6 +20,7 @@
 	<icon path="assets/nme.svg" />
 	<assets path="assets/img" rename="img" />
 	<assets path="assets/sounds" rename="sounds"/>
+	<assets path="assets/music" rename="music" />
 	<assets path="assets/waves" rename="waves"/>
 	
 	<!-- DLLs -->

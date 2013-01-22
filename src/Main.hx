@@ -1,5 +1,6 @@
 package ;
 
+import music.MusicManager;
 import nme.display.Sprite;
 import nme.display.Tilesheet;
 import nme.events.Event;
@@ -25,6 +26,7 @@ class Main extends Sprite
 	public static var active:Bool = true;
 	public static var obstacleManager:ObstacleManager;
 	public static var waveManager:WaveManager;
+	public static var musicManager:MusicManager;
 	
 	public static var playerWidth:Int = 32;
 	
@@ -44,6 +46,7 @@ class Main extends Sprite
 	{
 		// entry point
 		waveManager = new WaveManager(0);
+		musicManager = new MusicManager();
 		player = new Player(cast(Lib.current.stage.stageWidth/2 - 32,Int), cast(Lib.current.stage.stageHeight - 128, Int));
 		addChild(player);
 		score = new Score();

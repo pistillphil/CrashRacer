@@ -179,6 +179,7 @@ class Player extends Sprite
 	public function explode():Void
 	{
 		Main.active = false;
+		Main.musicManager.stop();
 		explosion = true;
 		explosionSound.play();
 		

@@ -149,13 +149,7 @@ class ObstacleManager extends Sprite
 	{
 		for (obs in obstacles)
 		{
-			if (obs.y < Main.player.y)
-			{
-				if (obs.image.hitTestObject(Main.player))
-				{
-					Main.player.explode();
-				}
-			}
+			obs.checkCollision();
 		}
 	}
 	

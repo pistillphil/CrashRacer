@@ -19,4 +19,15 @@ class AbstractObstacle extends Sprite
 		
 	}
 	
+	public function checkCollision():Void 
+	{
+		if (this.y < Main.player.y)
+			{
+				if (this.image.hitTestObject(Main.player))
+				{
+					Main.player.explode();
+				}
+			}
+	}
+	
 }

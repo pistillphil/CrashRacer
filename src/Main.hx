@@ -26,6 +26,8 @@ class Main extends Sprite
 	public static var obstacleManager:ObstacleManager;
 	public static var waveManager:WaveManager;
 	
+	public static var playerWidth:Int = 32;
+	
 	private var initialWave:Int = 0;
 	
 	public function new() 

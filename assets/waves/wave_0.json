@@ -2,6 +2,7 @@
 	"numberOfRocks":12,
 	"rockScale":0.15,
 	"numberOfRivers":1,
+	"bridgeWidthFactor": 6,
 	"scoreRate":0.1,
 	"minSpawnTime":40,
 	"maxSpawnTime":120,

@@ -37,6 +37,7 @@ class WaveManager
 		Main.obstacleManager.setNumRocks(waveData.numberOfRocks);
 		Main.obstacleManager.setRockScale(waveData.rockScale);
 		Main.obstacleManager.setNumRivers(waveData.numberOfRivers);
+		Main.obstacleManager.setBridgeWidth(waveData.bridgeWidthFactor);
 		AbstractObstacle.speed = waveData.driveSpeed;
 		Main.score.setScoreRate(waveData.scoreRate);
 		

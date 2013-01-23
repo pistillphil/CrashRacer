@@ -121,7 +121,7 @@ class ObstacleManager extends Sprite
 			var temp:AbstractObstacle = new River(Math.random() * (Lib.current.stage.stageWidth - bridgeWidth), bridgeWidth );
 			obstacles.add(temp);
 			Lib.current.stage.addChild(temp);
-			Lib.current.stage.setChildIndex(temp, 1);
+			Lib.current.stage.setChildIndex(temp, 0);
 			numRivers--;
 		}
 		

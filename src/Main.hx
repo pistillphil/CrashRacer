@@ -11,6 +11,7 @@ import player.Player;
 import nme.Assets;
 import nme.events.KeyboardEvent;
 import nme.ui.Keyboard;
+import powerups.PowerUpManager;
 import score.Score;
 import wave.WaveManager;
 
@@ -25,6 +26,7 @@ class Main extends Sprite
 	public static var score:Score;
 	public static var active:Bool = true;
 	public static var obstacleManager:ObstacleManager;
+	public static var powerUpManager:PowerUpManager;
 	public static var waveManager:WaveManager;
 	public static var musicManager:MusicManager;
 	
@@ -52,7 +54,9 @@ class Main extends Sprite
 		score = new Score();
 		addChild(score);
 		obstacleManager = new ObstacleManager();
+		powerUpManager = new PowerUpManager();
 		addChild(obstacleManager);
+		addChild(powerUpManager);
 		addEventListener(Event.ENTER_FRAME, update);
 		waveManager.loadWave();
 	}
@@ -64,6 +68,7 @@ class Main extends Sprite
 			setChildIndex(player, this.numChildren -1);
 			player.update(event);
 			obstacleManager.update(event);
+			powerUpManager.update(event);
 			score.addScore();
 			//trace(Lib.current.stage.numChildren);
 		}

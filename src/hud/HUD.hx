@@ -54,4 +54,17 @@ class HUD extends Sprite
 		hudText.setTextFormat (hudFormat);
 	}
 	
+	public function clearPowerUp():Void 
+	{
+		numPowerUps = 0;
+		
+		hudText.text = "Number of PowerUps: " + Std.string(numPowerUps);
+		hudText.setTextFormat (hudFormat);
+	}
+	
+	public function getNumPowerUps():Int 
+	{
+		return numPowerUps;
+	}
+	
 }

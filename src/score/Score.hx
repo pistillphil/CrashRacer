@@ -20,6 +20,7 @@ class Score extends Sprite
 	private var color:Int = 0x050505;
 	
 	private var scoreRate:Float;
+	private var defaultScoreRate:Float;
 
 	public function new() 
 	{
@@ -54,7 +55,8 @@ class Score extends Sprite
 	
 	public function addScore():Void 
 	{
-		addScoreBy(scoreRate);
+		addScoreBy(scoreRate + (Main.hud.getNumPowerUps() * 0.01));
+		//trace(scoreRate + (Main.hud.getNumPowerUps() * 0.01));
 		
 		/*if (score % 75 == 0)
 		{
@@ -66,6 +68,17 @@ class Score extends Sprite
 	public function setScoreRate(rate:Float):Void 
 	{
 		scoreRate = rate;
+		defaultScoreRate = rate;
 	}
+	/*
+	public function changeScoreRateBy(rate:Float):Void 
+	{
+		scoreRate + rate;
+	}
+	
+	public function resetScoreRate():Void 
+	{
+		scoreRate = defaultScoreRate;
+	}*/
 	
 }

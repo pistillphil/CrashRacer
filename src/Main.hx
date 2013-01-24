@@ -26,6 +26,7 @@ class Main extends Sprite
 	public static var player:Player;
 	public static var score:Score;
 	public static var active:Bool = true;
+	public static var invincible:Bool = false;
 	public static var obstacleManager:ObstacleManager;
 	public static var powerUpManager:PowerUpManager;
 	public static var waveManager:WaveManager;

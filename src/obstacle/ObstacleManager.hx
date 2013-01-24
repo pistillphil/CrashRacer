@@ -60,6 +60,7 @@ class ObstacleManager extends Sprite
 		checkCreate();
 		checkRemove();
 		checkWave();
+		riverTimeCount++;
 		
 	}
 	
@@ -99,13 +100,13 @@ class ObstacleManager extends Sprite
 		else if ( riverTimeCount > riverTimeOut)
 		{
 			createRiver();
+			riverTimeCount = 0;
 		}
 		else
 		{
 			createRock();
 		}
 		
-		riverTimeCount++;
 		
 	}
 	
@@ -158,9 +159,14 @@ class ObstacleManager extends Sprite
 	
 	private function checkCollision():Void
 	{
-		for (obs in obstacles)
+		if (!Main.invincible)
 		{
-			obs.checkCollision();
+		
+			for (obs in obstacles)
+			{
+				obs.checkCollision();
+			}
+		
 		}
 	}
 	

@@ -5,6 +5,9 @@ import nme.Assets;
 import nme.events.Event;
 import nme.Lib;
 import nme.media.Sound;
+import nme.events.Event;
+import nme.events.KeyboardEvent;
+import nme.ui.Keyboard;
 
 import obstacle.AbstractObstacle;
 
@@ -27,15 +30,22 @@ class PowerUpManager extends Sprite
 	
 	private var powerUpScale:Float;
 	
-	private var sound:Sound;
+	private var invincibilityDuration:Int = 180;
+	private var currentDuration:Int;
+	
+	private var collectSound:Sound;
+	private var useSound:Sound;
 
 	public function new() 
 	{
 		super();
 		powerUps = new Array<PowerUp>();
 		star = new Bitmap(Assets.getBitmapData("img/star.png"));
-		sound = Assets.getSound("sounds/pup.wav");
+		collectSound = Assets.getSound("sounds/pup.wav");
+		useSound = Assets.getSound("sounds/pup2.wav");
 		powerUpScale = 0.1;
+		
+		Lib.current.stage.addEventListener(KeyboardEvent.KEY_DOWN, usePowerUp);
 	}
 	
 	public function update(event:Event):Void 
@@ -43,6 +53,7 @@ class PowerUpManager extends Sprite
 		checkCollision();
 		checkCreate();
 		move();
+		checkInvincibility();
 		checkRemove();
 		
 	}
@@ -71,7 +82,7 @@ class PowerUpManager extends Sprite
 	
 	private function createPowerUp():Void 
 	{
-		var temp:PowerUp = new PowerUp(Math.random() * (Lib.current.stage.stageWidth -32), -64, star.bitmapData, powerUpScale);
+		var temp:PowerUp = new PowerUp(Math.random() * (Lib.current.stage.stageWidth -32), -32, star.bitmapData, powerUpScale);
 		powerUps.push(temp);
 		Lib.current.stage.addChild(temp);
 		Lib.current.stage.setChildIndex(temp, 0);
@@ -107,7 +118,7 @@ class PowerUpManager extends Sprite
 			{
 				powerUpsToBeRemoved.push(pup);
 				Main.hud.addPowerUp();
-				sound.play();
+				collectSound.play();
 			}
 		}
 		
@@ -121,4 +132,34 @@ class PowerUpManager extends Sprite
 		
 	}
 	
+	private function usePowerUp(event:KeyboardEvent):Void 
+	{
+		if (event.keyCode == Keyboard.SPACE && Main.hud.getNumPowerUps() != 0)
+		{
+			Main.hud.clearPowerUp();
+			useSound.play();
+			Main.invincible = true;
+			Main.player.alpha = 0.4;
+			currentDuration = 0;
+		}
+	}
+	
+	private function checkInvincibility():Void 
+	{
+		if (Main.invincible == true)
+		{
+			if (currentDuration > invincibilityDuration)
+			{
+				Main.invincible = false;
+				Main.player.alpha = 1;
+			}
+			
+			else
+			{
+				currentDuration++;
+			}
+		
+		}
+	
+	}
 }

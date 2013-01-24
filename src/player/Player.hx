@@ -24,7 +24,7 @@ import nme.Vector;
 class Player extends Sprite
 {
 
-	private var speed:Float = 6;		//The speed the car moves Left or Right
+	private var speed:Float = 7.5;		//The speed the car moves Left or Right
 	
 	private var tiles:Tilesheet;			//Tilesheet containing all Images of the car
 	private var sprites:Hash<Array<Float> >;//Holds all relevant images (according to direction)

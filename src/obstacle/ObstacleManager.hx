@@ -18,7 +18,7 @@ class ObstacleManager extends Sprite
 	private var create:Bool;
 	private var wait:Float;
 	
-	private var obstacles:List<AbstractObstacle>;
+	public var obstacles:List<AbstractObstacle>;
 	
 	private var min:Int;
 	private var max:Int;

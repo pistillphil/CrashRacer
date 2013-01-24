@@ -22,7 +22,22 @@ class PowerUp extends Sprite
 		this.scaleY = scale;
 		this.image = new Bitmap(image);
 		
+		checkObstacleCollision();
+		
 		addChild(this.image);
+	}
+	
+	private function checkObstacleCollision():Void 
+	{
+		for (obs in Main.obstacleManager.obstacles) 
+		{
+			if (this.hitTestObject(obs))
+			{
+				this.y -= 64;
+			}
+			
+		}
+		
 	}
 	
 }

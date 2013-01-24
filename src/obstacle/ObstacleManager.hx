@@ -28,6 +28,8 @@ class ObstacleManager extends Sprite
 	private var rockScale:Float;
 	
 	private var numRivers:Int;
+	private var riverTimeCount:Int = 0;
+	private var riverTimeOut:Int = 100;
 	
 	private var bridgeWidth:Float;
 
@@ -94,10 +96,16 @@ class ObstacleManager extends Sprite
 		{
 			createRock();
 		}
-		else if (true)	//placeholder, will be changed when more kinds of obstacles are implemented
+		else if ( riverTimeCount > riverTimeOut)
 		{
 			createRiver();
 		}
+		else
+		{
+			createRock();
+		}
+		
+		riverTimeCount++;
 		
 	}
 	

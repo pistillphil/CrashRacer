@@ -1,5 +1,6 @@
 package ;
 
+import hud.HUD;
 import music.MusicManager;
 import nme.display.Sprite;
 import nme.display.Tilesheet;
@@ -28,6 +29,7 @@ class Main extends Sprite
 	public static var obstacleManager:ObstacleManager;
 	public static var powerUpManager:PowerUpManager;
 	public static var waveManager:WaveManager;
+	public static var hud:HUD;
 	public static var musicManager:MusicManager;
 	
 	public static var playerWidth:Int = 32;
@@ -55,8 +57,10 @@ class Main extends Sprite
 		addChild(score);
 		obstacleManager = new ObstacleManager();
 		powerUpManager = new PowerUpManager();
+		hud = new HUD();
 		addChild(obstacleManager);
 		addChild(powerUpManager);
+		addChild(hud);
 		addEventListener(Event.ENTER_FRAME, update);
 		waveManager.loadWave();
 	}

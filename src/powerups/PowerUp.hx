@@ -10,7 +10,7 @@ import nme.display.Sprite;
 
 class PowerUp extends Sprite
 {
-	private var image:Bitmap;
+	public var image:Bitmap;
 
 	public function new(posX:Float, posY:Float,image:BitmapData,scale:Float) 
 	{

@@ -4,6 +4,7 @@ import nme.display.Sprite;
 import nme.Assets;
 import nme.events.Event;
 import nme.Lib;
+import nme.media.Sound;
 
 import obstacle.AbstractObstacle;
 
@@ -15,6 +16,7 @@ import obstacle.AbstractObstacle;
 class PowerUpManager extends Sprite
 {
 	public var powerUps:Array<PowerUp>;
+	private var powerUpsToBeRemoved:Array<PowerUp>;
 	private var star:Bitmap;
 	private var create:Bool = false;
 	
@@ -24,17 +26,21 @@ class PowerUpManager extends Sprite
 	private var wait:Float = 120;
 	
 	private var powerUpScale:Float;
+	
+	private var sound:Sound;
 
 	public function new() 
 	{
 		super();
 		powerUps = new Array<PowerUp>();
 		star = new Bitmap(Assets.getBitmapData("img/star.png"));
+		sound = Assets.getSound("sounds/pup.wav");
 		powerUpScale = 0.1;
 	}
 	
 	public function update(event:Event):Void 
 	{
+		checkCollision();
 		checkCreate();
 		move();
 		checkRemove();
@@ -88,8 +94,31 @@ class PowerUpManager extends Sprite
 		for (pup in powerUps)
 		{
 			pup.y += AbstractObstacle.speed;
-			trace(pup.y);
 		}
+	}
+	
+	private function checkCollision():Void 
+	{
+		powerUpsToBeRemoved = new Array<PowerUp>();
+		
+		for (pup in powerUps)
+		{
+			if (pup.image.hitTestObject(Main.player))
+			{
+				powerUpsToBeRemoved.push(pup);
+				Main.hud.addPowerUp();
+				sound.play();
+			}
+		}
+		
+		for (pup in powerUpsToBeRemoved)
+		{
+			powerUps.remove(pup);
+			Lib.current.stage.removeChild(pup);
+		}
+		
+		powerUpsToBeRemoved = null;
+		
 	}
 	
 }

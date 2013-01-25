@@ -24,7 +24,7 @@ class PowerUpManager extends Sprite
 	private var create:Bool = false;
 	
 	private var min:Int = 100;
-	private var max:Int = 120;
+	private var max:Int = 155;
 	private var counter:Int = 60;
 	private var wait:Float = 120;
 	

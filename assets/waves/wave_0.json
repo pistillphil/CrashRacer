@@ -5,6 +5,6 @@
 	"bridgeWidthFactor": 9,
 	"scoreRate":0.1,
 	"minSpawnTime":40,
-	"maxSpawnTime":120,
+	"maxSpawnTime":100,
 	"driveSpeed": 10
 }

@@ -29,7 +29,7 @@ class ObstacleManager extends Sprite
 	
 	private var numRivers:Int;
 	private var riverTimeCount:Int = 0;
-	private var riverTimeOut:Int = 100;
+	private var riverTimeOut:Int = 60;
 	
 	private var bridgeWidth:Float;
 
@@ -115,7 +115,7 @@ class ObstacleManager extends Sprite
 		if (numRocks > 0)
 		{
 			var randomImage:Int = Math.round(Math.random() * (rockImages.length - 1));
-			var temp:AbstractObstacle = new Rock(Math.random()* (Lib.current.stage.stageWidth -32), -64, rockImages[randomImage],rockScale);
+			var temp:AbstractObstacle = new Rock(Math.random()* (Lib.current.stage.stageWidth -32), (-512 * rockScale), rockImages[randomImage],rockScale);
 			obstacles.add(temp);
 			Lib.current.stage.addChild(temp);
 			Lib.current.stage.setChildIndex(temp, 0);

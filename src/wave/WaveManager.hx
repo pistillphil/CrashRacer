@@ -34,7 +34,7 @@ class WaveManager
 		else
 		{
 		waveData = Json.parse(data);
-		trace("New wave active!");
+		trace("Wave" + (waveCount+1) +" active!");
 		}
 		
 		Main.obstacleManager.setFrequency(waveData.minSpawnTime, waveData.maxSpawnTime);

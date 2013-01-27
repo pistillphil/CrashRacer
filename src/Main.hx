@@ -1,6 +1,7 @@
 package ;
 
 import hud.HUD;
+import menu.Menu;
 import music.MusicManager;
 import nme.display.Sprite;
 import nme.display.Tilesheet;
@@ -92,7 +93,7 @@ class Main extends Sprite
 		stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;
 		stage.align = nme.display.StageAlign.TOP_LEFT;
 		
-		Lib.current.addChild(new Main());
+		Lib.current.addChild(new Menu());
 	}
 	
 	

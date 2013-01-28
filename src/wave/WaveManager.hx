@@ -34,8 +34,9 @@ class WaveManager
 		else
 		{
 		waveData = Json.parse(data);
-		trace("Wave" + (waveCount+1) +" active!");
+		trace("Wave" + (waveCount + 1) +" active!");
 		}
+		Main.hud.setWaveCount(waveCount + 1);
 		
 		Main.obstacleManager.setFrequency(waveData.minSpawnTime, waveData.maxSpawnTime);
 		Main.obstacleManager.setNumRocks(waveData.numberOfRocks);

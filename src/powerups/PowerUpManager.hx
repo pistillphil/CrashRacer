@@ -134,7 +134,7 @@ class PowerUpManager extends Sprite
 	
 	private function usePowerUp(event:KeyboardEvent):Void 
 	{
-		if (event.keyCode == Keyboard.SPACE && Main.hud.getNumPowerUps() != 0)
+		if (event.keyCode == Keyboard.SPACE && Main.hud.getNumPowerUps() != 0 && Main.active)
 		{
 			Main.hud.clearPowerUp();
 			useSound.play();

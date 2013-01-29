@@ -18,11 +18,13 @@ class MusicManager
 	private var channel:SoundChannel;
 	private var currentSong:Sound;
 	private var isPlaying:Bool;
-	private var songCount:Int = 4;
+	private var songCount:Int;
 
 	public function new() 
 	{
-		songs = new Array<Sound>();
+		
+		this.songCount = 4;
+		this.songs = new Array<Sound>();
 		
 		for (i in 1...songCount+1)
 		{

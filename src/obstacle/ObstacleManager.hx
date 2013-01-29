@@ -28,14 +28,17 @@ class ObstacleManager extends Sprite
 	private var rockScale:Float;
 	
 	private var numRivers:Int;
-	private var riverTimeCount:Int = 0;
-	private var riverTimeOut:Int = 60;
+	private var riverTimeCount:Int;
+	private var riverTimeOut:Int;
 	
 	private var bridgeWidth:Float;
 
 	public function new() 
 	{
 		super();
+		
+		this.riverTimeCount = 0;
+		this.riverTimeOut = 60;
 		
 		this.x = 0;
 		this.y = 0;

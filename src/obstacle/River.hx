@@ -11,7 +11,7 @@ import nme.Lib;
 class River extends AbstractObstacle
 {
 	
-	private var riverBreadth:Int = 64;
+	private var riverBreadth:Int;
 	private var bridgePosition:Float;
 	private var bridgeWidth:Float;
 	
@@ -20,6 +20,8 @@ class River extends AbstractObstacle
 	public function new(bridgePos:Float, bridgeWidth:Float) 
 	{
 		super();
+		
+		this.riverBreadth = 64;
 		this.x = 0;
 		this.y = -64;
 		

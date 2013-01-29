@@ -12,11 +12,12 @@ import obstacle.AbstractObstacle;
 
 class WaveManager 
 {
-	private var waveCount:Int = 0;
+	private var waveCount:Int;
 	private var waveData:Dynamic;
 
 	public function new(waveCount:Int) 
 	{
+		
 		this.waveCount = waveCount;
 	}
 	

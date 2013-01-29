@@ -24,30 +24,37 @@ import nme.Vector;
 class Player extends Sprite
 {
 
-	private var speed:Float = 9;		//The speed the car moves Left or Right
+	private var speed:Float;		//The speed the car moves Left or Right
 	
 	private var tiles:Tilesheet;			//Tilesheet containing all Images of the car
 	private var sprites:Hash<Array<Float> >;//Holds all relevant images (according to direction)
 	
-	private var moveLeft:Bool = false;		//Does the car currently move left?
-	private var moveRight:Bool = false;		//Does the car currently move left?
+	private var moveLeft:Bool;		//Does the car currently move left?
+	private var moveRight:Bool;		//Does the car currently move left?
 	
 	private static var spriteWidth:Float;	//The width of the standard car sprite
 	
 	private var explosionTileSheet:Tilesheet;	//Tilesheet containing all frames  of the explosion
-	private var tileCount:Int = 0;				//How many tiles are in the Tilesheet?
+	private var tileCount:Int;				//How many tiles are in the Tilesheet?
 	public var explosionSound:Sound;			//Sounds is played when player explodes
 	private var explsionAnimation:Array<Array<Float> >;	//The data for the tilesheet (position and framenum)
 	public var explosion:Bool;				//Does the car (currently) explode?
-	private var explosionFrames:Int	= 64;	//The amount of time the explosion animation should last
+	private var explosionFrames:Int;	//The amount of time the explosion animation should last
 	private var tempFrames:Int;				//Helper for the explode() method
-	private var frameCount:Int = 0;				//Which frame in the animation is currently displayed?
+	private var frameCount:Int;				//Which frame in the animation is currently displayed?
 
 	//Constructor
 	public function new(posX:Int, posY:Int) 
 	{
 	
 		super();
+		
+		this.speed = 9;
+		this.moveLeft = false;
+		this.moveRight = false;
+		this.tileCount = 0;
+		this.explosionFrames = 64;
+		this.frameCount = 0;
 
 		this.x = posX;
 		this.y = posY;
@@ -204,6 +211,7 @@ class Player extends Sprite
 				{
 					explosion = false;
 					frameCount = 0;
+					Main.hud.gameOverScreen();
 					return;
 				}
 				

@@ -1,8 +1,10 @@
 package hud;
+import nme.display.Bitmap;
 import nme.display.Sprite;
 import nme.text.TextField;
 import nme.text.TextFormat;
 import nme.text.TextFormatAlign;
+import nme.events.MouseEvent;
 import nme.Lib;
 
 /**
@@ -20,15 +22,19 @@ class HUD extends Sprite
 	private var hudWave:TextField;
 	
 	private var hudFormat:TextFormat;
-	private var fontSize:Int = 30;
-	private var color:Int = 0x050505;
+	private var fontSize:Int;
+	private var color:Int;
+	
+	private var gameOver:GameOverScreen;
 
 	public function new() 
 	{
 		super();
 		
-		numPowerUps = 0;
-		waveCount = 0;
+		this.numPowerUps = 0;
+		this.waveCount = 0;
+		this.fontSize = 30;
+		this.color = 0x050505;
 		
 		this.x = fontSize;
 		this.y = 0;
@@ -54,6 +60,8 @@ class HUD extends Sprite
 		
 		addChild(hudText);
 		addChild(hudWave);
+		
+		gameOver = new GameOverScreen();
 		
 	}
 	
@@ -84,6 +92,12 @@ class HUD extends Sprite
 	public function getNumPowerUps():Int 
 	{
 		return numPowerUps;
+	}
+	
+	public function gameOverScreen():Void 
+	{
+		addChild(gameOver);
+		gameOver.addEventListener(MouseEvent.CLICK, Main.mainObj.restart);
 	}
 	
 }

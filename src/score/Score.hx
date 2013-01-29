@@ -17,7 +17,7 @@ class Score extends Sprite
 	private var scoreFormat:TextFormat;
 	
 	private var fontSize:Int = 30;
-	private var color:Int = 0x050505;
+	private var color:Int;
 	
 	private var scoreRate:Float;
 	private var defaultScoreRate:Float;
@@ -25,6 +25,9 @@ class Score extends Sprite
 	public function new() 
 	{
 		super();
+		
+		this.fontSize = 30;
+		this.color = 0x050505;
 		
 		this.score = 0;
 		

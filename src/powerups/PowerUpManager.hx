@@ -21,16 +21,16 @@ class PowerUpManager extends Sprite
 	public var powerUps:Array<PowerUp>;
 	private var powerUpsToBeRemoved:Array<PowerUp>;
 	private var star:Bitmap;
-	private var create:Bool = false;
+	private var create:Bool;
 	
-	private var min:Int = 100;
-	private var max:Int = 155;
-	private var counter:Int = 60;
-	private var wait:Float = 120;
+	private var min:Int;
+	private var max:Int;
+	private var counter:Int;
+	private var wait:Float;
 	
 	private var powerUpScale:Float;
 	
-	private var invincibilityDuration:Int = 180;
+	private var invincibilityDuration:Int;
 	private var currentDuration:Int;
 	
 	private var collectSound:Sound;
@@ -39,6 +39,15 @@ class PowerUpManager extends Sprite
 	public function new() 
 	{
 		super();
+		
+		this.create = false;
+		this.min = 100;
+		this.max = 155;
+		this.counter = 60;
+		this.wait = 120;
+		this.invincibilityDuration = 180;
+		
+		
 		powerUps = new Array<PowerUp>();
 		star = new Bitmap(Assets.getBitmapData("img/star.png"));
 		collectSound = Assets.getSound("sounds/pup.wav");

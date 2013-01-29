@@ -10,7 +10,7 @@ import nme.display.Bitmap;
 class AbstractObstacle extends Sprite
 {
 	public var image:Bitmap;
-	public static var speed:Int = 10;
+	public static var speed:Int;
 
 	public function new() 
 	{

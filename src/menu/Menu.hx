@@ -16,12 +16,15 @@ class Menu extends Sprite
 	private var buttonStart:MenuButton;
 	private var buttonHelp:MenuButton;
 	
-	private var buttonOffsetX:Float = 64;
-	private var buttonOffsetY:Float = 145;
+	private var buttonOffsetX:Float;
+	private var buttonOffsetY:Float;
 
 	public function new() 
 	{
 		super();
+		
+		this.buttonOffsetX = 64;
+		this.buttonOffsetY = 145;
 		
 		image = new Bitmap(Assets.getBitmapData("img/menu.png"));
 		buttonStart = new MenuButton("img/buttonStart.png");

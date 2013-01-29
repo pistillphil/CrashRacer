@@ -43,7 +43,8 @@ class Menu extends Sprite
 	
 	function handleStartClick(event:MouseEvent):Void 
 	{
-		Lib.current.addChild(new Main());
+		Main.mainObj = new Main();
+		Lib.current.addChild(Main.mainObj);
 		Lib.current.removeChild(this);
 		buttonStart.removeEventListener(MouseEvent.CLICK, handleStartClick);
 	}

@@ -136,8 +136,7 @@ class Main extends Sprite
 		stage.scaleMode = nme.display.StageScaleMode.NO_SCALE;
 		stage.align = nme.display.StageAlign.TOP_LEFT;
 		
-		mainObj = new Main();
-		Lib.current.addChild(mainObj);
+		Lib.current.addChild(new Menu());
 	}
 	
 	

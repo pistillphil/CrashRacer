@@ -80,7 +80,6 @@ class Main extends Sprite
 	{
 		if (active) 
 		{	
-			//setChildIndex(player, this.numChildren -1);
 			player.update(event);
 			obstacleManager.update(event);
 			powerUpManager.update(event);
@@ -95,10 +94,6 @@ class Main extends Sprite
 	
 	public function restart(event:MouseEvent):Void 
 	{
-		for (i in 0...Lib.current.stage.numChildren-1)
-		{
-			Lib.current.stage.removeChildAt(i);
-		}
 		
 		this.removeChild(player);
 		this.removeChild(score);

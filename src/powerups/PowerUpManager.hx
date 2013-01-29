@@ -93,8 +93,7 @@ class PowerUpManager extends Sprite
 	{
 		var temp:PowerUp = new PowerUp(Math.random() * (Lib.current.stage.stageWidth -32), -32, star.bitmapData, powerUpScale);
 		powerUps.push(temp);
-		Lib.current.stage.addChild(temp);
-		Lib.current.stage.setChildIndex(temp, 0);
+		addChild(temp);
 	}
 	
 	private function checkRemove():Void 
@@ -103,7 +102,7 @@ class PowerUpManager extends Sprite
 		{
 			if (pup.y > Lib.current.stage.stageHeight)
 			{
-				Lib.current.stage.removeChild(pup);
+				removeChild(pup);
 				powerUps.remove(pup);
 			}
 		}
@@ -134,7 +133,7 @@ class PowerUpManager extends Sprite
 		for (pup in powerUpsToBeRemoved)
 		{
 			powerUps.remove(pup);
-			Lib.current.stage.removeChild(pup);
+			removeChild(pup);
 		}
 		
 		powerUpsToBeRemoved = null;

@@ -120,8 +120,7 @@ class ObstacleManager extends Sprite
 			var randomImage:Int = Math.round(Math.random() * (rockImages.length - 1));
 			var temp:AbstractObstacle = new Rock(Math.random()* (Lib.current.stage.stageWidth -32), (-512 * rockScale), rockImages[randomImage],rockScale);
 			obstacles.add(temp);
-			Lib.current.stage.addChild(temp);
-			Lib.current.stage.setChildIndex(temp, 0);
+			addChild(temp);
 			numRocks--;
 		}
 	}
@@ -132,8 +131,7 @@ class ObstacleManager extends Sprite
 		{
 			var temp:AbstractObstacle = new River(Math.random() * (Lib.current.stage.stageWidth - bridgeWidth), bridgeWidth );
 			obstacles.add(temp);
-			Lib.current.stage.addChild(temp);
-			Lib.current.stage.setChildIndex(temp, 0);
+			addChild(temp);
 			numRivers--;
 		}
 		
@@ -154,7 +152,7 @@ class ObstacleManager extends Sprite
 		{
 			if (obs.y > Lib.current.stage.stageHeight)
 			{
-				Lib.current.stage.removeChild(obs);
+				removeChild(obs);
 				obstacles.remove(obs);
 			}
 		}

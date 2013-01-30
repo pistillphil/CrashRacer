@@ -1,11 +1,13 @@
 package hud;
 import nme.display.Bitmap;
 import nme.display.Sprite;
+import nme.text.Font;
 import nme.text.TextField;
 import nme.text.TextFormat;
 import nme.text.TextFormatAlign;
 import nme.events.MouseEvent;
 import nme.Lib;
+import nme.Assets;
 
 /**
  * ...
@@ -14,7 +16,8 @@ import nme.Lib;
 
 class HUD extends Sprite
 {
-	
+	private var font:Font;
+
 	private var numPowerUps:Int;
 	private var waveCount:Int;
 	
@@ -39,6 +42,7 @@ class HUD extends Sprite
 		this.x = fontSize;
 		this.y = 0;
 		
+		font = Assets.getFont("fonts/aesymatt.ttf");
 		hudText = new TextField();
 		hudText.y = Lib.current.stage.stageHeight - (fontSize*2);
 		hudText.width = Lib.current.stage.stageWidth - 64;
@@ -51,9 +55,11 @@ class HUD extends Sprite
 		hudWave.selectable = false;
 		hudWave.text = "Wave: " + waveCount;
 		
-		
-		hudFormat = new TextFormat ("_sans", this.fontSize, this.color);
+		hudFormat = new TextFormat (font.fontName, this.fontSize, this.color);
 		hudFormat.align = TextFormatAlign.RIGHT;
+		
+		hudText.embedFonts = true;
+		hudWave.embedFonts = true;
 		
 		hudText.setTextFormat(hudFormat);
 		hudWave.setTextFormat(hudFormat);

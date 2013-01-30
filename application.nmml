@@ -22,6 +22,7 @@
 	<assets path="assets/sounds" rename="sounds"/>
 	<assets path="assets/music" rename="music" />
 	<assets path="assets/waves" rename="waves"/>
+	<assets path="assets/fonts" rename="fonts" />
 	
 	<!-- DLLs -->
 	<ndll name="std" />

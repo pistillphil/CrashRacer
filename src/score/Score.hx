@@ -1,9 +1,11 @@
 package score;
 import nme.display.Sprite;
+import nme.text.Font;
 import nme.text.TextField;
 import nme.text.TextFormat;
 import nme.text.TextFormatAlign;
 import nme.Lib;
+import nme.Assets;
 
 /**
  * ...
@@ -12,6 +14,8 @@ import nme.Lib;
 
 class Score extends Sprite
 {
+	private var font:Font;
+	
 	private var score:Float;
 	private var scoreText:TextField;
 	private var scoreFormat:TextFormat;
@@ -34,6 +38,7 @@ class Score extends Sprite
 		this.x = fontSize;
 		this.y = 0;
 		
+		font = Assets.getFont("fonts/aesymatt.ttf");
 		scoreText = new TextField();
 		scoreText.y = Lib.current.stage.stageHeight - (fontSize*2);
 		scoreText.width = 500;
@@ -41,10 +46,11 @@ class Score extends Sprite
 		scoreText.text = "Score: " + Std.string(Math.floor(score));
 		
 		
-		scoreFormat = new TextFormat ("_sans", this.fontSize, this.color);
+		scoreFormat = new TextFormat (font.fontName, this.fontSize, this.color);
 		scoreFormat.align = TextFormatAlign.LEFT;
 		
 		scoreText.setTextFormat (scoreFormat);
+		scoreText.embedFonts = true;
 		
 		addChild(scoreText);
 	}

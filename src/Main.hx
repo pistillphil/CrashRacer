@@ -62,7 +62,7 @@ class Main extends Sprite
 		
 		waveManager = new WaveManager(0);
 		musicManager = new MusicManager();
-		player = new Player(cast(Lib.current.stage.stageWidth/2 - 32,Int), cast(Lib.current.stage.stageHeight - 128, Int));
+		player = new Player(Lib.current.stage.stageWidth/2 - 32, Lib.current.stage.stageHeight - 128);
 		addChild(player);
 		score = new Score();
 		addChild(score);

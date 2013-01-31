@@ -44,7 +44,7 @@ class Player extends Sprite
 	private var frameCount:Int;				//Which frame in the animation is currently displayed?
 
 	//Constructor
-	public function new(posX:Int, posY:Int) 
+	public function new(posX:Float, posY:Float) 
 	{
 	
 		super();

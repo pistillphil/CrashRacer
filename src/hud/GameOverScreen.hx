@@ -19,8 +19,8 @@ class GameOverScreen extends Sprite
 		
 		image = new Bitmap(Assets.getBitmapData("img/gameOver.png"));
 		
-		this.x = Lib.current.stage.stageWidth / 2 - image.width/2;
-		this.y = Lib.current.stage.stageWidth / 2 - image.height/2;
+		this.x = Lib.current.stage.stageWidth / 2 - image.width / 1.6;
+		this.y = Lib.current.stage.stageHeight / 2 - image.height / 1.6;
 		addChild(image);
 	}
 	

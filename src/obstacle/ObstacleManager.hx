@@ -1,4 +1,5 @@
 package obstacle;
+import nme.display.Bitmap;
 import nme.display.DisplayObject;
 import nme.display.Sprite;
 import nme.events.Event;
@@ -32,6 +33,9 @@ class ObstacleManager extends Sprite
 	private var riverTimeOut:Int;
 	
 	private var bridgeWidth:Float;
+	
+	private var backGround1:Bitmap;
+	private var backGround2:Bitmap;
 
 	public function new() 
 	{
@@ -42,6 +46,15 @@ class ObstacleManager extends Sprite
 		
 		this.x = 0;
 		this.y = 0;
+		
+		backGround1 = new Bitmap(Assets.getBitmapData("img/Road.png"));
+		backGround2 = new Bitmap(Assets.getBitmapData("img/Road.png"));
+		
+		backGround1.y = - (backGround1.bitmapData.height - Lib.current.stage.stageHeight);
+		backGround2.y = - (backGround1.bitmapData.height - Lib.current.stage.stageHeight) - backGround2.bitmapData.height;
+		
+		Lib.current.stage.addChildAt(backGround1, 0);
+		Lib.current.stage.addChildAt(backGround2, 0);
 		
 		this.obstacles = new List<AbstractObstacle>();
 		
@@ -63,6 +76,7 @@ class ObstacleManager extends Sprite
 		checkCreate();
 		checkRemove();
 		checkWave();
+		moveBackground();
 		riverTimeCount++;
 		
 	}
@@ -211,6 +225,22 @@ class ObstacleManager extends Sprite
 	{
 		this.bridgeWidth = width * Main.playerWidth;
 
+	}
+	
+	private function moveBackground():Void 
+	{
+		backGround1.y += AbstractObstacle.speed;
+		backGround2.y += AbstractObstacle.speed;
+		
+		if (backGround1.y >= Lib.current.stage.stageHeight)
+		{
+			backGround1.y = - (backGround2.bitmapData.height - Lib.current.stage.stageHeight) - backGround1.bitmapData.height;
+		}
+		
+		if (backGround2.y >= Lib.current.stage.stageHeight)
+		{
+			backGround2.y = - (backGround1.bitmapData.height - Lib.current.stage.stageHeight) - backGround2.bitmapData.height;
+		}
 	}
 	
 }

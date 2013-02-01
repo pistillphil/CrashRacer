@@ -148,7 +148,6 @@ class PowerUpManager extends Sprite
 			useSound.play();
 			Main.invincible = true;
 			Main.player.alpha = 0.4;
-			currentDuration = 0;
 			if (Math.random() <= 0.66)
 			{
 				createPowerUp();
@@ -162,12 +161,15 @@ class PowerUpManager extends Sprite
 		{
 			if (currentDuration > invincibilityDuration)
 			{
+				//trace("stop");
 				Main.invincible = false;
 				Main.player.alpha = 1;
+				currentDuration = 0;
 			}
 			
 			else
 			{
+				//trace("invi");
 				currentDuration++;
 			}
 		

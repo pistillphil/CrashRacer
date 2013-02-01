@@ -34,12 +34,13 @@ class ObstacleManager extends Sprite
 	
 	private var bridgeWidth:Float;
 	
-	private var backGround1:Bitmap;
-	private var backGround2:Bitmap;
+	public var backGround1:Bitmap;
+	public var backGround2:Bitmap;
 
 	public function new() 
 	{
 		super();
+		
 		
 		this.riverTimeCount = 0;
 		this.riverTimeOut = 60;
@@ -234,12 +235,12 @@ class ObstacleManager extends Sprite
 		
 		if (backGround1.y >= Lib.current.stage.stageHeight)
 		{
-			backGround1.y = - (backGround2.bitmapData.height - Lib.current.stage.stageHeight) - backGround1.bitmapData.height;
+			backGround1.y =  (backGround2.y - backGround1.height);
 		}
 		
 		if (backGround2.y >= Lib.current.stage.stageHeight)
 		{
-			backGround2.y = - (backGround1.bitmapData.height - Lib.current.stage.stageHeight) - backGround2.bitmapData.height;
+			backGround2.y =  (backGround1.y - backGround2.height);
 		}
 	}
 	

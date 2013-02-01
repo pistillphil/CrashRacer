@@ -94,6 +94,8 @@ class Main extends Sprite
 	
 	public function restart(event:MouseEvent):Void 
 	{
+		Lib.current.stage.removeChild(obstacleManager.backGround1);
+		Lib.current.stage.removeChild(obstacleManager.backGround2);
 		
 		this.removeChild(player);
 		this.removeChild(score);

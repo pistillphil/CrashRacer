@@ -149,6 +149,10 @@ class PowerUpManager extends Sprite
 			Main.invincible = true;
 			Main.player.alpha = 0.4;
 			currentDuration = 0;
+			if (Math.random() <= 0.66)
+			{
+				createPowerUp();
+			}
 		}
 	}
 	

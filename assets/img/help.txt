@@ -1,5 +1,5 @@
-You're on the run! The only way to flee
- is through a desert!
+You're on the run! The only choice you have
+ is driving through a desert!
 Avoid obstacles by moving left and right
  (A and D)
 Pick up PowerUps (stars) by touching them
@@ -8,4 +8,4 @@ The more PowerUps you have the faster
 If things get dangerous, use ALL your
  PowerUps by pressing space:
 You will be invincible for ~3 seconds
- ,but your score bonus is gone...
+ but your score bonus is gone...

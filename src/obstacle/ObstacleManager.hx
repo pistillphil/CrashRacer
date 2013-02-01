@@ -188,7 +188,7 @@ class ObstacleManager extends Sprite
 	
 	private function checkWave():Void 
 	{
-		if (numRocks + numRocks < 1 && numChildren < 1)
+		if (numRocks + numRivers < 1 && numChildren < 1)
 		{
 			Main.waveManager.loadNextWave();
 		}

@@ -27,7 +27,7 @@ class Menu extends Sprite
 	{
 		super();
 		
-		this.buttonOffsetX = 64;
+		this.buttonOffsetX = 32;
 		this.buttonOffsetY = 145;
 		
 		image = new Bitmap(Assets.getBitmapData("img/menu.png"));
@@ -40,7 +40,7 @@ class Menu extends Sprite
 		buttonHelp.y = image.height - buttonOffsetY;
 		buttonBack = new MenuButton("img/buttonBack.png");
 		buttonBack.x = image.width - buttonBack.width - buttonOffsetX;
-		buttonBack.y = image.height - (buttonOffsetY/2);
+		buttonBack.y = image.height - buttonOffsetY;
 		addChild(image);
 		addChild(buttonStart);
 		addChild(buttonHelp);
